@@ -1,5 +1,5 @@
 import java.util.regex.*; 
-class GDG { 
+class GFG { 
 
 	
 	public static boolean

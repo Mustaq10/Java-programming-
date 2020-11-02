@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.Scanner;
+class Electricitybill{
+    int consumerno;
+    String consumername,type;
+    float previousmonthreading,currentmonthreading;
+    public Electricitybill(int consumerno,String consumername,String type,float previousmonthreading,float currentmonthreading){
+        this.consumerno=consumerno;
+        this.consumername=consumername;
+        this.type=type;
+        this.previousmonthreading=previousmonthreading;
+        this.currentmonthreading=currentmonthreading;
+    }
+    float calBillAmount(){
+        float units=Math.abs(previousmonthreading-currentmonthreading);
+        float bill=0.0f;
+    if(type.equals("Domestic")==true){
+        for(int i=1;i<=units;i++){
+            if(i<=100)
+            bill+=i*1;
+            else if(i>100&& i<=200)
+            bill+=i*2.5;
+            else if(i>200&&i<=500)
+            bill+=i*4;
+            else
+            bill+=i*6;
+        }
+    }
+    else{
+        for(int i=1;i<=units;i++){
+            if(i<=100)
+            bill+=i*2;
+            else if(i>100&& i<=200)
+            bill+=i*4.5;
+            else if(i>200&&i<=500)
+            bill+=i*6;
+            else
+            bill+=i*7;
+            }
+        }
+        return bill;
+    }
+}
+
+class Main{
+    public static void main(String arhs[]){
+        Electricitybill k=new Electricitybill(1200,"Mustaq","Commercial",31.848f,259.49f);
+        System.out.println(k.calBillAmount());
+    }
+}
